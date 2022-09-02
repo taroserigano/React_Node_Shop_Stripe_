@@ -7,10 +7,13 @@ function calculateOrderAmount(cartItems) {
 }
 
 async function paymentIntent(req, res) {
+  
+  // pick up some info from request body 
   const { cartItems, description, receipt_email, shipping } = req.body;
   let paymentIntent;
 
   try {
+    // add the necessary info for payment 
     paymentIntent = await stripeAPI.paymentIntents.create({
       amount: calculateOrderAmount(cartItems),
       currency: 'usd',
