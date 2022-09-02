@@ -76,11 +76,13 @@ const CustomCheckout = ({ shipping, cartItems, history: { push } }) => {
       payment_method: {
         card: elements.getElement(CardNumberElement)
       }
+      // if successful, no response gets sent, but if errors, process like below 
     });
 
     if (payload.error) {
       setError(`Payment Failed: ${payload.error.message}`);
     } else {
+      // if successful, 
       if (saveCard && si) {
         // send the customers card details to be saved with stripe
         await stripe.confirmCardSetup(si.client_secret, {
@@ -88,6 +90,7 @@ const CustomCheckout = ({ shipping, cartItems, history: { push } }) => {
             card: elements.getElement(CardNumberElement)
           }
         }); 
+        // redirect to Success Page, payment is successfully completed 
         push('/success');
       } else {
         push('/success');
