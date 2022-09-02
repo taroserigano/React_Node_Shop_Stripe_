@@ -27,6 +27,7 @@ function webhook(req, res) {
 
   if (webHookHandlers[event.type]) {
     // IF there's event type, grab the event type data object 
+    // such as 'payment_intent' 
     webHookHandlers[event.type](event.data.object);
   }
 }
