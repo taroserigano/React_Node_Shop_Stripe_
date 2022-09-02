@@ -20,6 +20,7 @@ async function createCheckoutSession(req, res) {
       cancel_url: `${domainUrl}/canceled`,
       shipping_address_collection: { allowed_countries: ['GB', 'US'] }
     }); 
+    // You wouldn;t need entire session data. You just need session.id and it covers all the info you need for this checkout transaction 
     res.status(200).json({ sessionId: session.id, });
   } catch (error) {
     console.log(error);
