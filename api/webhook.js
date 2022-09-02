@@ -26,6 +26,7 @@ function webhook(req, res) {
   }
 
   if (webHookHandlers[event.type]) {
+    // IF there's event type, grab the event type data object 
     webHookHandlers[event.type](event.data.object);
   }
 }
