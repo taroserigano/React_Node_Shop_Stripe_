@@ -1,3 +1,5 @@
+// set up the user for payment 
+
 const stripeAPI = require('../stripe');
 const getCustomer = require('../helpers/getCustomer');
 
