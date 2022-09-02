@@ -1,3 +1,7 @@
+
+// Set up the info for payment 
+
+
 const stripeAPI = require('../stripe');
 
 function calculateOrderAmount(cartItems) {
