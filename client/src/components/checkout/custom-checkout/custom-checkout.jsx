@@ -52,8 +52,9 @@ const CustomCheckout = ({ shipping, cartItems, history: { push } }) => {
         receipt_email: shipping.email,
       }
 
-      const customCheckout = async () => {
+      const customCheckout = async () => { 
         // grab clientSecret and id 
+        // clientSecret is the long list of info like users, amount, data, etc for each transaction 
         const { clientSecret, id } = await fetchFromAPI('create-payment-intent', {
           body
         });
