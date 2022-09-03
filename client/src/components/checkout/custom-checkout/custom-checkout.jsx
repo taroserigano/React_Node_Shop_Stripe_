@@ -37,7 +37,8 @@ const CustomCheckout = ({ shipping, cartItems, history: { push } }) => {
       }
       savedCards();
     }
-
+    / if this has shipping information, 
+    // collect the info details from the body 
     if (shipping) {
       const body = {
         cartItems: items,
@@ -52,6 +53,7 @@ const CustomCheckout = ({ shipping, cartItems, history: { push } }) => {
       }
 
       const customCheckout = async () => {
+        // grab clientSecret and id 
         const { clientSecret, id } = await fetchFromAPI('create-payment-intent', {
           body
         });
@@ -74,6 +76,7 @@ const CustomCheckout = ({ shipping, cartItems, history: { push } }) => {
     }
     const payload = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
+        // sending the card numbers 
         card: elements.getElement(CardNumberElement)
       }
       // if successful, no response gets sent, but if errors, process like below 
