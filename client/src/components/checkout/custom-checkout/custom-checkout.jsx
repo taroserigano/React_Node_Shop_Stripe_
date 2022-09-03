@@ -27,6 +27,7 @@ const CustomCheckout = ({ shipping, cartItems, history: { push } }) => {
     if (user) {
       const savedCards = async () => {
         try {
+          // horrible name but grab returns that contain       customer: customer.id & type: 'card' 
           const cardsList = await fetchFromAPI('get-payment-methods', {
             method: 'GET',
           }); 
